@@ -5,7 +5,18 @@
 @theme {
   --font-fn: "Be Vietnam Pro", sans-serif;
 
-  --color-background: #20293a;
   --color-fn-white: #cdd5e0;
   --color-fn-gray: #97a3b6;
+  --color-background: #20293a;
+  --color-userInfo-bg: #111729;
+}
+
+@layer components {
+  .info {
+    @apply bg-userInfo-bg px-4 py-3 rounded-[10px];
+  }
+
+  .separator {
+    @apply font-thin px-2;
+  }
 }

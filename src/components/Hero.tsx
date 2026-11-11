@@ -6,7 +6,7 @@ function Hero({ userInfo }: HeroProps) {
     <>
       <div className="w-full max-w-[1880px] min-h-60 bg-[url('../../resources/hero-image-github-profile-sm.jpg')] md:bg-[url('../../resources/hero-image-github-profile.jpg')] bg-no-repeat bg-top bg-cover absolute"></div>
 
-      <section className="w-full max-w-7xl flex flex-col items-center font-fn text-fn-white px-8 py-8 mx-auto my-0 z-10">
+      <section className="w-full max-w-7xl flex flex-col items-center text-fn-white px-8 pt-8 mx-auto mt-0 mb-4 z-10">
         <div className="w-full max-w-95 relative">
           <img
             src={SearchIcon}

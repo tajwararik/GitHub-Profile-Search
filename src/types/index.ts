@@ -10,3 +10,16 @@ export type User = {
 export type HeroProps = {
   userInfo: User;
 };
+
+export type Repo = {
+  name: string;
+  description: string;
+  license: string;
+  forks: number;
+  stars: number;
+  lastUpdated: string;
+};
+
+export type RepoProps = {
+  userRepos: Repo;
+};

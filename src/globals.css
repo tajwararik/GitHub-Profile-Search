@@ -19,4 +19,8 @@
   .separator {
     @apply font-thin px-2;
   }
+
+  .repo-info {
+    @apply flex items-center gap-x-1;
+  }
 }

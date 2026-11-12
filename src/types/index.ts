@@ -2,13 +2,14 @@ export type User = {
   username: string;
   avatar: string;
   bio: string;
-  followers: number;
-  following: number;
+  followers: number | null;
+  following: number | null;
   location: string;
 };
 
 export type HeroProps = {
   userInfo: User;
+  handleUsername: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 export type Repo = {

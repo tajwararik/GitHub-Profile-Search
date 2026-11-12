@@ -1,7 +1,7 @@
 import type { HeroProps } from "../types";
 import SearchIcon from "../../resources/Search.svg";
 
-function Hero({ userInfo }: HeroProps) {
+function Hero({ userInfo, handleUsername }: HeroProps) {
   return (
     <>
       <div className="w-full max-w-[1880px] min-h-60 bg-[url('../../resources/hero-image-github-profile-sm.jpg')] md:bg-[url('../../resources/hero-image-github-profile.jpg')] bg-no-repeat bg-top bg-cover absolute"></div>
@@ -17,6 +17,7 @@ function Hero({ userInfo }: HeroProps) {
             type="text"
             className="w-full text-xs font-semibold text-fn-white placeholder:text-fn-white bg-background py-3 pl-9 rounded-lg outline-0"
             placeholder="username"
+            onChange={handleUsername}
           />
         </div>
 

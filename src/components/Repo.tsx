@@ -17,10 +17,12 @@ function DisplayRepos({ userRepos }: RepoProps) {
 
           <div className="flex flex-wrap items-center gap-7">
             <div className="flex flex-wrap gap-x-3">
-              <span className="repo-info">
-                <img src={LicenseIcon} alt="license icon" />
-                {repo.license}
-              </span>
+              {repo.license && (
+                <span className="repo-info">
+                  <img src={LicenseIcon} alt="license icon" />
+                  {repo.license}
+                </span>
+              )}
 
               <span className="repo-info">
                 <img src={ForkIcon} alt="fork icon" />

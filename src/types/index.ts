@@ -13,6 +13,7 @@ export type HeroProps = {
 };
 
 export type Repo = {
+  id: number;
   name: string;
   description: string;
   license: string;
@@ -22,5 +23,5 @@ export type Repo = {
 };
 
 export type RepoProps = {
-  userRepos: Repo;
+  userRepos: Repo[];
 };

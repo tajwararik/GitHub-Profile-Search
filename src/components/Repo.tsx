@@ -11,32 +11,38 @@ function DisplayRepos({ userRepos }: RepoProps) {
           key={repo.id}
           className="bg-[linear-gradient(95deg,#111729_3%,#1d1b48_99.61%)] p-5 my-8 rounded-xl"
         >
-          <h3 className="text-xl font-semibold text-fn-white">{repo.name}</h3>
+          <a href={repo.url} target="_blank">
+            <div>
+              <h3 className="text-xl font-semibold text-fn-white">
+                {repo.name}
+              </h3>
 
-          <p className="mt-2 mb-4">{repo.description}</p>
+              <p className="mt-2 mb-4">{repo.description}</p>
 
-          <div className="flex flex-wrap items-center gap-7">
-            <div className="flex flex-wrap gap-x-3">
-              {repo.license && (
-                <span className="repo-info">
-                  <img src={LicenseIcon} alt="license icon" />
-                  {repo.license}
-                </span>
-              )}
+              <div className="flex flex-wrap items-center gap-7">
+                <div className="flex flex-wrap gap-x-3">
+                  {repo.license && (
+                    <span className="repo-info">
+                      <img src={LicenseIcon} alt="license icon" />
+                      {repo.license}
+                    </span>
+                  )}
 
-              <span className="repo-info">
-                <img src={ForkIcon} alt="fork icon" />
-                {repo.forks}
-              </span>
+                  <span className="repo-info">
+                    <img src={ForkIcon} alt="fork icon" />
+                    {repo.forks}
+                  </span>
 
-              <span className="repo-info">
-                <img src={StarIcon} alt="star icon" />
-                {repo.stars}
-              </span>
+                  <span className="repo-info">
+                    <img src={StarIcon} alt="star icon" />
+                    {repo.stars}
+                  </span>
+                </div>
+
+                <p className="text-xs">{repo.lastUpdated}</p>
+              </div>
             </div>
-
-            <p className="text-xs">{repo.lastUpdated}</p>
-          </div>
+          </a>
         </div>
       ))}
     </section>

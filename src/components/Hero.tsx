@@ -4,7 +4,7 @@ import SearchIcon from "../../resources/Search.svg";
 function Hero({ userInfo, handleUsername }: HeroProps) {
   return (
     <>
-      <div className="w-full max-w-[1880px] min-h-60 bg-[url('../../resources/hero-image-github-profile-sm.jpg')] md:bg-[url('../../resources/hero-image-github-profile.jpg')] bg-no-repeat bg-top bg-cover absolute"></div>
+      <div className="w-full max-w-[1880px] min-h-60 bg-hero md:bg-hero-md bg-no-repeat bg-top bg-cover absolute"></div>
 
       <section className="w-full max-w-7xl flex flex-col items-center text-fn-white px-8 pt-8 mx-auto mt-0 mb-4 z-10">
         <div className="w-full max-w-95 relative">

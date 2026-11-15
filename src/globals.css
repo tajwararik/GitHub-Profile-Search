@@ -9,6 +9,10 @@
   --color-fn-gray: #97a3b6;
   --color-background: #20293a;
   --color-userInfo-bg: #111729;
+
+  --background-image-hero: url("../resources/hero-image-github-profile-sm.jpg");
+
+  --background-image-hero-md: url("../resources/hero-image-github-profile.jpg");
 }
 
 @layer components {

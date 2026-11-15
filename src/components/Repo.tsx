@@ -5,7 +5,7 @@ import StarIcon from "../../resources/Star.svg";
 
 function DisplayRepos({ userRepos }: RepoProps) {
   return (
-    <section className="w-full max-w-7xl text-fn-gray px-8 pb-8 mx-auto">
+    <section className="w-full max-w-7xl text-fn-gray px-8 pb-8 mx-auto md:grid grid-cols-2 gap-8">
       {userRepos.map((repo: Repo) => (
         <div
           key={repo.id}

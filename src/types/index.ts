@@ -15,6 +15,7 @@ export type HeroProps = {
 export type Repo = {
   id: number;
   name: string;
+  url: string;
   description: string;
   license: string;
   forks: number;

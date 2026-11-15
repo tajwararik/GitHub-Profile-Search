@@ -45,6 +45,7 @@ function App() {
         const repos: Repo[] = data.map((repo: any) => ({
           id: repo.id,
           name: repo.name,
+          url: repo.html_url,
           description: repo.description,
           license: repo.license?.name,
           forks: repo.forks,

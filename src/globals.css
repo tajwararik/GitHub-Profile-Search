@@ -2,6 +2,14 @@
 
 @import "tailwindcss";
 
+body {
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  background-color: #20293a;
+  overflow-x: hidden;
+}
+
 @theme {
   --font-fn: "Be Vietnam Pro", sans-serif;
 

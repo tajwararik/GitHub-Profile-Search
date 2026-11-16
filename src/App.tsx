@@ -65,7 +65,7 @@ function App() {
   };
 
   return (
-    <main className="w-full min-h-screen font-fn bg-background">
+    <main className="w-full font-fn">
       <Hero userInfo={userInfo} handleUsername={handleUsername} />
       <DisplayRepos userRepos={userRepos} />
     </main>

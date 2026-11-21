@@ -11,22 +11,39 @@ function Hero({ userInfo, handleUsername }: HeroProps) {
           <img
             src={SearchIcon}
             alt="search icon"
-            className="w-5 h-5 absolute top-2/4 -translate-y-1/2 left-2"
+            className="size-5 absolute top-2/4 -translate-y-1/2 left-2"
           />
           <input
             type="text"
-            className="w-full text-xs font-semibold text-fn-white placeholder:text-fn-white bg-background py-3 pl-9 rounded-lg outline-0"
+            className="w-full text-xs font-semibold text-fn-white placeholder:text-fn-white bg-background py-3 pl-9 mb-2 rounded-lg outline-0"
             placeholder="username"
             onChange={handleUsername}
           />
+
+          <div className="w-full absolute bg-userInfo-bg rounded-lg z-20">
+            <div className="flex items-center gap-3 p-2">
+              <div className="size-15 rounded-lg">
+                <img
+                  src={userInfo.avatar}
+                  alt="user avatar"
+                  className="display-image"
+                />
+              </div>
+
+              <div className="flex flex-col justify-center gap-y-1">
+                <p className="">{userInfo.username}</p>
+                <p className="text-[10px] text-fn-gray">{userInfo.bio}</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="w-full flex flex-col gap-8 md:flex-row mt-32 z-10">
-          <div className="w-25 h-25 bg-background p-1.5 pb-0 rounded-xl">
+          <div className="size-25 bg-background p-1.5 rounded-xl">
             <img
               src={userInfo.avatar}
               alt="user avatar"
-              className="w-full h-full rounded-lg"
+              className="display-image"
             />
           </div>
 

@@ -24,6 +24,10 @@ body {
 }
 
 @layer components {
+  .display-image {
+    @apply size-full rounded-lg;
+  }
+
   .info {
     @apply bg-userInfo-bg px-4 py-3 rounded-[10px];
   }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import type { User, Repo } from "./types";
+import formateLateUpdate from "../utils/formateDate";
 import Hero from "./components/Hero";
 import DisplayRepos from "./components/Repo";
 import "../src/globals.css";
@@ -50,7 +51,7 @@ function App() {
           license: repo.license?.name,
           forks: repo.forks,
           stars: repo.watchers,
-          lastUpdated: repo.updated_at,
+          lastUpdated: formateLateUpdate(repo.updated_at),
         }));
 
         setUserRepos(repos);

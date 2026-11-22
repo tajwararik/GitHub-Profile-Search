@@ -3,7 +3,7 @@ import type { User, Repo } from "./types";
 import useFetchData from "./services/github";
 import Hero from "./components/Hero";
 import DisplayRepos from "./components/Repo";
-import "../src/globals.css";
+import "./globals.css";
 
 function App() {
   const [username, setUsername] = useState("github");
@@ -22,7 +22,7 @@ function App() {
   useFetchData(username, setUserInfo, setUserRepos);
 
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
+    e.target.value !== "" ? setUsername(e.target.value) : setUsername("github");
   };
 
   return (

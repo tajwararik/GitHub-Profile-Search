@@ -29,13 +29,13 @@ const useFetchData = (
         });
       })
       .catch((error) => {
-        console.log(error);
+        if (error.name !== "AbortError") console.log(error);
       });
 
     return () => {
       controller.abort();
     };
-  }, [username]);
+  }, [username, setUserinfo]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -64,13 +64,13 @@ const useFetchData = (
         setUserRepos(repos);
       })
       .catch((error) => {
-        console.log(error);
+        if (error.name !== "AbortError") console.log(error);
       });
 
     return () => {
       controller.abort();
     };
-  }, [username]);
+  }, [username, setUserRepos]);
 };
 
 export default useFetchData;

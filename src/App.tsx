@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { User, Repo } from "./types";
-import formateLateUpdate from "../utils/formateDate";
+import useFetchData from "./services/github";
 import Hero from "./components/Hero";
 import DisplayRepos from "./components/Repo";
 import "../src/globals.css";
@@ -19,47 +19,7 @@ function App() {
 
   const [userRepos, setUserRepos] = useState<Repo[]>([]);
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${username}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setUserInfo({
-          username: data.name,
-          avatar: data.avatar_url,
-          bio: data.bio,
-          followers: data.followers,
-          following: data.following,
-          location: data.location,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [username]);
-
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${username}/repos`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        const repos: Repo[] = data.map((repo: any) => ({
-          id: repo.id,
-          name: repo.name,
-          url: repo.html_url,
-          description: repo.description,
-          license: repo.license?.name,
-          forks: repo.forks,
-          stars: repo.watchers,
-          lastUpdated: formateLateUpdate(repo.updated_at),
-        }));
-
-        setUserRepos(repos);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [username]);
+  useFetchData(username, setUserInfo, setUserRepos);
 
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);

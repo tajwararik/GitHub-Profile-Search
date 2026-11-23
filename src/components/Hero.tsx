@@ -1,5 +1,6 @@
 import type { HeroProps } from "../types";
 import SearchIcon from "../../resources/Search.svg";
+import SearchResults from "./SearchResults";
 
 function Hero({ userInfo, handleUsername }: HeroProps) {
   return (
@@ -21,20 +22,11 @@ function Hero({ userInfo, handleUsername }: HeroProps) {
           />
 
           <div className="w-full absolute bg-userInfo-bg rounded-lg z-20">
-            <div className="flex items-center gap-3 p-2">
-              <div className="size-15 rounded-lg">
-                <img
-                  src={userInfo.avatar}
-                  alt="user avatar"
-                  className="display-image"
-                />
-              </div>
-
-              <div className="flex flex-col justify-center gap-y-1">
-                <p className="">{userInfo.username}</p>
-                <p className="text-[10px] text-fn-gray">{userInfo.bio}</p>
-              </div>
-            </div>
+            <SearchResults
+              username={userInfo.username}
+              avatar={userInfo.avatar}
+              bio={userInfo.bio}
+            />
           </div>
         </div>
 

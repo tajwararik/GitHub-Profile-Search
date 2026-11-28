@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import type { SearchUser, Repo, User } from "../types";
+import type { SearchResults, Repo, User } from "../types";
 import formateLateUpdate from "../utils/formateDate";
 
 export function showSearchResults(
   searchUser: string,
-  setSearchResults: React.Dispatch<React.SetStateAction<[]>>,
+  setSearchResults: React.Dispatch<React.SetStateAction<SearchResults[]>>,
 ) {
   useEffect(() => {
     if (!searchUser) return;
@@ -20,7 +20,7 @@ export function showSearchResults(
         return response.json();
       })
       .then((data) => {
-        const results = data.items.map((result: SearchUser) => ({
+        const results: SearchResults[] = data.items.map((result: any) => ({
           id: result.id,
           username: result.login,
           avatar: result.avatar_url,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { User, Repo } from "./types";
+import type { User, Repo, SearchResults } from "./types";
 import { showSearchResults, useFetchData } from "./services/github";
 import Hero from "./components/Hero";
 import DisplayRepos from "./components/Repo";
@@ -10,7 +10,7 @@ function App() {
 
   const [searchUser, setSearchUser] = useState("");
 
-  const [searchResults, setSearchResults] = useState<[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResults[]>([]);
 
   const [userInfo, setUserInfo] = useState<User>({
     username: "",
@@ -28,13 +28,14 @@ function App() {
   showSearchResults(searchUser, setSearchResults);
 
   const handleSearchUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.value === ""
-      ? setUsername("github")
-      : setSearchUser(e.target.value);
+    if (!e.target.value) setUsername("github");
+
+    setSearchUser(e.target.value);
   };
 
   const handleGetUser = (username: string) => {
     setUsername(username);
+    setSearchUser("");
   };
 
   return (

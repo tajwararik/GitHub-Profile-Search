@@ -1,13 +1,13 @@
-import type { SearchUser } from "../types";
+import type { SearchResults } from "../types";
 
-function SearchResults({
+function ShowResults({
   searchResults,
   handleGetUser,
 }: {
-  searchResults: SearchUser[];
+  searchResults: SearchResults[];
   handleGetUser: (username: string) => void;
 }) {
-  return searchResults.map((result: SearchUser) => (
+  return searchResults.map((result: SearchResults) => (
     <div
       key={result.id}
       className="flex gap-3 p-2 cursor-pointer"
@@ -22,4 +22,4 @@ function SearchResults({
   ));
 }
 
-export default SearchResults;
+export default ShowResults;

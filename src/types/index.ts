@@ -1,11 +1,11 @@
-export type SearchUser = {
+export type SearchResults = {
   id?: number;
   username: string;
   avatar: string;
   url?: string;
 };
 
-export interface User extends SearchUser {
+export interface User extends SearchResults {
   bio: string;
   followers: number | null;
   following: number | null;
@@ -15,7 +15,7 @@ export interface User extends SearchUser {
 export type HeroProps = {
   userInfo: User;
   searchUser: string;
-  searchResults: SearchUser[];
+  searchResults: SearchResults[];
   handleSearchUser: React.ChangeEventHandler<HTMLInputElement>;
   handleGetUser: (username: string) => void;
 };

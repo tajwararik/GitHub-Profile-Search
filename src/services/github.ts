@@ -1,8 +1,45 @@
 import { useEffect } from "react";
-import type { Repo, User } from "../types";
+import type { SearchUser, Repo, User } from "../types";
 import formateLateUpdate from "../utils/formateDate";
 
-const useFetchData = (
+export function showSearchResults(
+  searchUser: string,
+  setSearchResults: React.Dispatch<React.SetStateAction<[]>>,
+) {
+  useEffect(() => {
+    if (!searchUser) return;
+
+    const controller = new AbortController();
+
+    fetch(`https://api.github.com/search/users?q=${searchUser}&per_page=4`, {
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to fetch search results.");
+
+        return response.json();
+      })
+      .then((data) => {
+        const results = data.items.map((result: SearchUser) => ({
+          id: result.id,
+          username: result.login,
+          avatar: result.avatar_url,
+          url: result.url,
+        }));
+
+        setSearchResults(results);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") console.log(error);
+      });
+
+    return () => {
+      controller.abort();
+    };
+  }, [searchUser]);
+}
+
+export const useFetchData = (
   username: string,
   setUserinfo: React.Dispatch<React.SetStateAction<User>>,
   setUserRepos: React.Dispatch<React.SetStateAction<Repo[]>>,
@@ -72,5 +109,3 @@ const useFetchData = (
     };
   }, [username, setUserRepos]);
 };
-
-export default useFetchData;

@@ -1,12 +1,16 @@
 import { useState } from "react";
 import type { User, Repo } from "./types";
-import useFetchData from "./services/github";
+import { showSearchResults, useFetchData } from "./services/github";
 import Hero from "./components/Hero";
 import DisplayRepos from "./components/Repo";
 import "./globals.css";
 
 function App() {
   const [username, setUsername] = useState("github");
+
+  const [searchUser, setSearchUser] = useState("");
+
+  const [searchResults, setSearchResults] = useState<[]>([]);
 
   const [userInfo, setUserInfo] = useState<User>({
     username: "",
@@ -21,13 +25,27 @@ function App() {
 
   useFetchData(username, setUserInfo, setUserRepos);
 
-  const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.target.value !== "" ? setUsername(e.target.value) : setUsername("github");
+  showSearchResults(searchUser, setSearchResults);
+
+  const handleSearchUser = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.target.value === ""
+      ? setUsername("github")
+      : setSearchUser(e.target.value);
+  };
+
+  const handleGetUser = (username: string) => {
+    setUsername(username);
   };
 
   return (
     <main className="w-full font-fn">
-      <Hero userInfo={userInfo} handleUsername={handleUsername} />
+      <Hero
+        userInfo={userInfo}
+        searchUser={searchUser}
+        handleSearchUser={handleSearchUser}
+        searchResults={searchResults}
+        handleGetUser={handleGetUser}
+      />
       <DisplayRepos userRepos={userRepos} />
     </main>
   );

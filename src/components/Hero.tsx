@@ -1,6 +1,6 @@
 import type { HeroProps } from "../types";
 import SearchIcon from "../../resources/Search.svg";
-import SearchResults from "./SearchResults";
+import ShowResults from "./ShowResults";
 
 function Hero({
   userInfo,
@@ -30,7 +30,7 @@ function Hero({
           <div
             className={`w-full ${searchUser ? "absolute" : "hidden"} bg-userInfo-bg rounded-lg z-20`}
           >
-            <SearchResults
+            <ShowResults
               searchResults={searchResults}
               handleGetUser={handleGetUser}
             />

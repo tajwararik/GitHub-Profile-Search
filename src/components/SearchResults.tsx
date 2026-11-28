@@ -1,24 +1,25 @@
+import type { SearchUser } from "../types";
+
 function SearchResults({
-  username,
-  avatar,
-  bio,
+  searchResults,
+  handleGetUser,
 }: {
-  username: string;
-  avatar: string;
-  bio: string;
+  searchResults: SearchUser[];
+  handleGetUser: (username: string) => void;
 }) {
-  return (
-    <div className="flex items-center gap-3 p-2">
+  return searchResults.map((result: SearchUser) => (
+    <div
+      key={result.id}
+      className="flex gap-3 p-2 cursor-pointer"
+      onClick={() => handleGetUser(result.username)}
+    >
       <div className="size-15 rounded-lg">
-        <img src={avatar} alt="user avatar" className="display-image" />
+        <img src={result.avatar} alt="user avatar" className="display-image" />
       </div>
 
-      <div className="flex flex-col justify-center gap-y-1">
-        <p className="">{username}</p>
-        <p className="text-[10px] text-fn-gray">{bio}</p>
-      </div>
+      <p className="mt-2">{result.username}</p>
     </div>
-  );
+  ));
 }
 
 export default SearchResults;

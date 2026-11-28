@@ -2,7 +2,13 @@ import type { HeroProps } from "../types";
 import SearchIcon from "../../resources/Search.svg";
 import SearchResults from "./SearchResults";
 
-function Hero({ userInfo, handleUsername }: HeroProps) {
+function Hero({
+  userInfo,
+  searchUser,
+  handleSearchUser,
+  searchResults,
+  handleGetUser,
+}: HeroProps) {
   return (
     <>
       <div className="w-full min-h-60 bg-hero md:bg-hero-md bg-no-repeat bg-top bg-cover absolute"></div>
@@ -18,14 +24,15 @@ function Hero({ userInfo, handleUsername }: HeroProps) {
             type="text"
             className="w-full text-xs font-semibold text-fn-white placeholder:text-fn-white bg-background py-3 pl-9 mb-2 rounded-lg outline-0"
             placeholder="username"
-            onChange={handleUsername}
+            onChange={handleSearchUser}
           />
 
-          <div className="w-full absolute bg-userInfo-bg rounded-lg z-20">
+          <div
+            className={`w-full ${searchUser ? "absolute" : "hidden"} bg-userInfo-bg rounded-lg z-20`}
+          >
             <SearchResults
-              username={userInfo.username}
-              avatar={userInfo.avatar}
-              bio={userInfo.bio}
+              searchResults={searchResults}
+              handleGetUser={handleGetUser}
             />
           </div>
         </div>
